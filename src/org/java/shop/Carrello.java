@@ -26,9 +26,9 @@ public class Carrello {
              sc.nextLine();
              System.out.print("Hai una carta fedeltà (sì/no)? ");
              String cartaFedelta = sc.nextLine();
-             haCartaFedelta = cartaFedelta.equalsIgnoreCase("sì") ? true : false;
+             haCartaFedelta = cartaFedelta.equalsIgnoreCase("si") ? true : false;
              
-             
+             System.out.print(haCartaFedelta);
              System.out.print("Inserisci il cdice IMEI: ");
              String codImei = sc.nextLine();
              System.out.print("Inserisci i gb di memoria: ");
