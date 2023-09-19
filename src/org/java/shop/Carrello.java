@@ -15,26 +15,23 @@ public class Carrello {
         Prodotto prodotto = null;
 
         if (sceltaProdotto.equalsIgnoreCase("Smartphone")) {
-        	 System.out.print("Inserisci il codice: ");
-             String codice = sc.nextLine();
-             System.out.print("Inserisci il modello: ");
-             String modello = sc.nextLine();
-             System.out.print("Inserisci la marca: ");
-             String marca = sc.nextLine();
-             System.out.print("Inserisci il prezzo: ");
-             double prezzo = sc.nextDouble();
-             sc.nextLine();
-             System.out.print("Hai una carta fedeltà (sì/no)? ");
-             String cartaFedelta = sc.nextLine();
-             haCartaFedelta = cartaFedelta.equalsIgnoreCase("si") ? true : false;
-             
-             System.out.print(haCartaFedelta);
-             System.out.print("Inserisci il cdice IMEI: ");
-             String codImei = sc.nextLine();
-             System.out.print("Inserisci i gb di memoria: ");
-             int memoria = sc.nextInt();
-             
-             prodotto = new Smartphone(codice, modello, marca, prezzo, haCartaFedelta, codImei, memoria);
+        	System.out.print("Inserisci il codice: ");
+        	String codice = sc.nextLine();
+        	System.out.print("Inserisci il modello: ");
+        	String modello = sc.nextLine();
+        	System.out.print("Inserisci la marca: ");
+        	String marca = sc.nextLine();
+        	System.out.print("Inserisci il prezzo: ");
+        	double prezzo = Double.parseDouble(sc.nextLine());
+        	System.out.print("Inserisci il codice IMEI: ");
+        	String codImei = sc.nextLine();
+        	System.out.print("Inserisci i GB di memoria: ");
+        	int memoria = Integer.parseInt(sc.nextLine());
+        	System.out.print("Hai una carta fedeltà (sì/no)? ");
+        	String cartaFedelta = sc.nextLine();
+        	haCartaFedelta = cartaFedelta.equalsIgnoreCase("si");
+
+        	prodotto = new Smartphone(codice, modello, marca, prezzo, haCartaFedelta, codImei, memoria);
         } else if (sceltaProdotto.equalsIgnoreCase("Televisore")) {
              
            
