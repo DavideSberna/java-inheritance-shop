@@ -5,8 +5,8 @@ public class Televisore extends Prodotto {
 	private int height;
 	private boolean smart;
 
-	public Televisore(String codice, String nome, String marca, int prezzo, int width, int height, boolean smart) {
-		super(codice, nome, marca, prezzo);
+	public Televisore(String codice, String nome, String marca, int prezzo, boolean discount, int width, int height, boolean smart) {
+		super(codice, nome, marca, prezzo, discount);
 		setWidth(width);
 		setHeight(height);
 		setSmart(smart);
@@ -42,10 +42,21 @@ public class Televisore extends Prodotto {
 		return (getWidth() * getHeight()) + " pollici" ;
 	}
 	
+	public double finalPrice() {
+		if(super.discount()) {
+			if(!getSmart()) {
+				double amount = (super.prezzoFormattato() * 10) / 100;
+				return super.prezzoFormattato() - amount;
+			}
+			return (super.prezzoFormattato() * 98 / 100);
+		}
+		return super.prezzoFormattato();
+	}
+	
 	@Override
 	public String toString() {
 
-		return getCodice() + " | " + getMarca() + " | " + getNome() + " | " + prezzoFormattato() + " | " + dimensioni() +  " | " + (getSmart() ? "Smart TV" : "No Smart TV");
+		return super.toString() + " | " + dimensioni() +  " | " + (getSmart() ? "Smart TV" : "No Smart TV")  + " | "  + finalPrice() + " euro" ;
 	}
 
 }

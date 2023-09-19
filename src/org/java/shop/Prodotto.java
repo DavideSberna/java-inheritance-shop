@@ -5,15 +5,26 @@ public class Prodotto {
 	private String codice;
 	private String nome;
 	private String marca;
-	private int prezzo;
+	private double prezzo;
 	private int iva;
+	private boolean discount;
 	
-	public Prodotto(String codice, String nome, String marca, int prezzo) {
+	public Prodotto(String codice, String nome, String marca, double prezzo, boolean discount) {
 		this.codice = codice;
 		setNome(nome);
 		setMarca(marca);
 		setPrezzo(prezzo);
 		this.iva = 22;
+		this.discount = discount;
+	}
+	
+	public boolean getDiscount() {
+		
+		return discount;
+	}
+	public void setDiscount(boolean discount) {
+		
+		this.discount = discount;
 	}
 	
 	public String getCodice() {
@@ -44,11 +55,11 @@ public class Prodotto {
 		this.marca = marca;
 	}
 	
-	public int getPrezzo() {
+	public double getPrezzo() {
 		return prezzo;
 	}
 	
-	public void setPrezzo(int prezzo) {
+	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
 	
@@ -56,17 +67,26 @@ public class Prodotto {
 		return this.prezzo + " euro";
 	}
 	
-	public String prezzoFormattato() {
-		int ivaTotale = (getPrezzo() * getIva()) / 100;
-		int prezzoTotale = getPrezzo() - ivaTotale;
-		return prezzoTotale + " euro";
+	public double prezzoFormattato() {
+		double ivaTotale = (getPrezzo() * getIva()) / 100;
+		double prezzoTotale = getPrezzo() + ivaTotale;
+		return prezzoTotale;
 	}
+	
+	public boolean discount() {
+		if(getDiscount()) {
+			return true;
+		}
+		return false;
+		 
+	}
+	
 	
 	
 	@Override
 	public String toString() {
 
-		return getCodice() + " | " + getNome() + " | " + getMarca() + " | " + prezzoFormattato();
+		return getCodice() + " | " + getNome() + " | " + getMarca();
 	}
 	
 	

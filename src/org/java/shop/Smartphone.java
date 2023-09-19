@@ -5,8 +5,8 @@ public class Smartphone extends Prodotto  {
 	private String codImei;
 	private int memoria;
 	
-	public Smartphone(String codice, String nome, String marca, int prezzo, String codImei, int memoria) {
-		super(codice, nome, marca, prezzo);
+	public Smartphone(String codice, String nome, String marca, double prezzo, boolean discount, String codImei, int memoria) {
+		super(codice, nome, marca, prezzo, discount);
 		setCodImei(codImei);
 		setMemoria(memoria);
 	}
@@ -27,10 +27,23 @@ public class Smartphone extends Prodotto  {
 		this.memoria = memoria;
 	}
 	
+	public double finalPrice() {
+		if(super.discount()) {			
+			if(getMemoria() < 32) {
+				double amount = (super.prezzoFormattato() * 5) / 100;
+				return super.prezzoFormattato() - amount;
+			}
+			return (super.prezzoFormattato() * 98 / 100);
+		}
+		return super.prezzoFormattato();
+	}
+	
+	
+	
+	
 	@Override
 	public String toString() {
-
-		return getCodice() + " | " + getMarca() + " | " + getNome() + " | " + prezzoFormattato() + " | " + getCodImei() +  " | " + getMemoria()  + " gb";
+		return super.toString() + " | " + getCodImei() +  " | " + getMemoria()  + " gb" + " | "  + finalPrice() + " euro";
 	}
 
 }
