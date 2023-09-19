@@ -3,11 +3,34 @@ package org.java.shop;
 import java.util.Scanner;
 
 public class Carrello {
+	 static boolean haCartaFedelta = false;
+	
+	 public static Smartphone creaSmartphone(Scanner sc) {
+		 System.out.print("Inserisci il codice: ");
+     	String codice = sc.nextLine();
+     	System.out.print("Inserisci il modello: ");
+     	String modello = sc.nextLine();
+     	System.out.print("Inserisci la marca: ");
+     	String marca = sc.nextLine();
+     	System.out.print("Inserisci il prezzo: ");
+     	double prezzo = Double.parseDouble(sc.nextLine());
+     	System.out.print("Inserisci il codice IMEI: ");
+     	String codImei = sc.nextLine();
+     	System.out.print("Inserisci i GB di memoria: ");
+     	int memoria = Integer.parseInt(sc.nextLine());
+     	System.out.print("Hai una carta fedeltà (sì/no)? ");
+     	String cartaFedelta = sc.nextLine();
+     	haCartaFedelta = cartaFedelta.equalsIgnoreCase("si");
 
+     	return new Smartphone(codice, modello, marca, prezzo, haCartaFedelta, codImei, memoria);
+	    }
+	 
+	 
+	 
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-        boolean haCartaFedelta = false;
+        
 
         System.out.print("Cosa desideri inserire (Smartphone/Televisore/Cuffie)? ");
         String sceltaProdotto = sc.nextLine();
@@ -15,23 +38,7 @@ public class Carrello {
         Prodotto prodotto = null;
 
         if (sceltaProdotto.equalsIgnoreCase("Smartphone")) {
-        	System.out.print("Inserisci il codice: ");
-        	String codice = sc.nextLine();
-        	System.out.print("Inserisci il modello: ");
-        	String modello = sc.nextLine();
-        	System.out.print("Inserisci la marca: ");
-        	String marca = sc.nextLine();
-        	System.out.print("Inserisci il prezzo: ");
-        	double prezzo = Double.parseDouble(sc.nextLine());
-        	System.out.print("Inserisci il codice IMEI: ");
-        	String codImei = sc.nextLine();
-        	System.out.print("Inserisci i GB di memoria: ");
-        	int memoria = Integer.parseInt(sc.nextLine());
-        	System.out.print("Hai una carta fedeltà (sì/no)? ");
-        	String cartaFedelta = sc.nextLine();
-        	haCartaFedelta = cartaFedelta.equalsIgnoreCase("si");
-
-        	prodotto = new Smartphone(codice, modello, marca, prezzo, haCartaFedelta, codImei, memoria);
+        	prodotto = creaSmartphone(sc);
         } else if (sceltaProdotto.equalsIgnoreCase("Televisore")) {
              
            
@@ -48,18 +55,13 @@ public class Carrello {
         
         System.out.println(prodotto);
 
-        
-		
+ 
 		 
 		
 		
 		
 		
-		
-		//Televisore televisore1 = new Televisore("CDF64367", "Galaxy", "samsung", 299,true, 20, 20, true);
-		//Smartphone smartphone1 = new Smartphone("GHJ48167", "Mate", "Huawei", 699,false, "cod imei: 23423 DD FGH", 32);
-		//Cuffie cuffia1 = new Cuffie("L67417YT", "Iphone 1", "Apple", 39, true, "Rosso", true);
-		
+		 
 		
 		
 		 
